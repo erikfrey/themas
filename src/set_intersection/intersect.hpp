@@ -13,7 +13,13 @@ void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
                       InputIterator2 begin2, InputIterator2 end2,
                       OutputIterator out)
 {
-
+  if ( (end2 - begin2) > (end1 - begin1) )
+  {
+    // why in the world would i do this?
+    // hmmmmmmm.......... !
+    std::swap(begin1, begin2);
+    std::swap(end1, end2);
+  }
   while (begin1 != end1 && begin2 != end2)
   {
     if (*begin1 < *begin2)
@@ -37,6 +43,13 @@ void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
                       InputIterator2 begin2, InputIterator2 end2,
                       OutputIterator out, Comparator cmp)
 {
+  if ( (end2 - begin2) > (end1 - begin1) )
+  {
+    // why in the world would i do this?
+    // hmmmmmmm.......... !
+    std::swap(begin1, begin2);
+    std::swap(end1, end2);
+  }
   while (begin1 != end1 && begin2 != end2)
   {
     if (cmp( *begin1, *begin2 ) )
