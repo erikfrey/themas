@@ -8,9 +8,9 @@ namespace themas {
 /*
  * like stl's set_intersect
  */
-template<class InputIterator1, class InputIterator2, class OutputIterator>
-void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
-                      InputIterator2 begin2, InputIterator2 end2,
+template<class InputIterator, class OutputIterator>
+void linear_intersect(InputIterator begin1, InputIterator end1,
+                      InputIterator begin2, InputIterator end2,
                       OutputIterator out)
 {
   if ( (end2 - begin2) > (end1 - begin1) )
@@ -38,9 +38,9 @@ void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
 /*
  * this time with a comparator!
  */
-template<class InputIterator1, class InputIterator2, class OutputIterator, class Comparator >
-void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
-                      InputIterator2 begin2, InputIterator2 end2,
+template<class InputIterator, class OutputIterator, class Comparator >
+void linear_intersect(InputIterator begin1, InputIterator end1,
+                      InputIterator begin2, InputIterator end2,
                       OutputIterator out, Comparator cmp)
 {
   if ( (end2 - begin2) > (end1 - begin1) )
@@ -69,13 +69,12 @@ void linear_intersect(InputIterator1 begin1, InputIterator1 end1,
  * baeza_intersect
  */
 template< template <class, class> class Probe,
-  class RandomAccessIterator1, class RandomAccessIterator2, class OutputIterator>
-void baeza_intersect(RandomAccessIterator1 begin1, RandomAccessIterator1 end1,
-                     RandomAccessIterator2 begin2, RandomAccessIterator2 end2,
+  class RandomAccessIterator, class OutputIterator>
+void baeza_intersect(RandomAccessIterator begin1, RandomAccessIterator end1,
+                     RandomAccessIterator begin2, RandomAccessIterator end2,
                      OutputIterator out)
 {
-  RandomAccessIterator1 probe1;
-  RandomAccessIterator2 probe2;
+  RandomAccessIterator probe1, probe2;
 
   if ( (end1 - begin1) < ( end2 - begin2 ) )
   {
@@ -105,13 +104,12 @@ void baeza_intersect(RandomAccessIterator1 begin1, RandomAccessIterator1 end1,
  * with a comparator
  */
 template< template <class, class> class Probe,
-  class RandomAccessIterator1, class RandomAccessIterator2, class OutputIterator, class Comparator >
-void baeza_intersect(RandomAccessIterator1 begin1, RandomAccessIterator1 end1,
-                     RandomAccessIterator2 begin2, RandomAccessIterator2 end2,
+  class RandomAccessIterator, class OutputIterator, class Comparator >
+void baeza_intersect(RandomAccessIterator begin1, RandomAccessIterator end1,
+                     RandomAccessIterator begin2, RandomAccessIterator end2,
                      OutputIterator out, Comparator cmp)
 {
-  RandomAccessIterator1 probe1;
-  RandomAccessIterator2 probe2;
+  RandomAccessIterator probe1, probe2;
 
   if ( (end1 - begin1) < ( end2 - begin2 ) )
   {
